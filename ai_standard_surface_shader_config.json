@@ -1,0 +1,143 @@
+{
+    "textures": {
+        "base": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "baseColor": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "diffuseRoughness": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "metalness": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "specular": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "specularColor": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "specularRoughness": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "transmission": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "transmissionColor": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "transmissionDepth": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "transmissionScatter": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "transmissionExtraRoughness": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "subsurface": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "subsurfaceColor": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "subsurfaceRadius": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "coat": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "coatColor": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "coatRoughness": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "sheen": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "sheenColor": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "sheenRoughness": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "emission": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "emissionColor": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "opacity": {
+            "colorSpace": "sRGB",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false
+        },
+        "normal": {
+            "colorSpace": "Raw",
+            "connectType": "color",
+            "enableAlphaIsLuminance": false,
+            "type": [
+                "opengl",
+                "directx"
+            ]
+        },
+        "bump": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        },
+        "height": {
+            "colorSpace": "Raw",
+            "connectType": "Alpha",
+            "enableAlphaIsLuminance": true
+        }
+    }
+}
