@@ -134,6 +134,8 @@ class ShaderCreator(QtWidgets.QMainWindow):
 
         config = self.shader_config["textures"]
 
+
+
         for filepath in only_images:
             filename = os.path.basename(filepath).lower()
             filename_split = os.path.splitext(filename)[0].split("_")
@@ -207,7 +209,11 @@ class ShaderCreator(QtWidgets.QMainWindow):
 
 
 
-        self.update_ui()
+        if len(only_images) == 0:
+            self.raise_warning("Didn't find any usable files")
+        else:
+
+            self.update_ui()
 
 
     def update_ui(self):
