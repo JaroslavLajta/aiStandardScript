@@ -3,8 +3,8 @@
 import os
 import json
 from maya import cmds
-from PySide6.QtWidgets import QLabel, QLineEdit, QHBoxLayout, QSlider, QPushButton,QFileDialog,QComboBox,QFrame
-from PySide6 import QtWidgets
+from PySide6.QtWidgets import QLabel, QLineEdit, QHBoxLayout, QPushButton,QFileDialog,QComboBox,QFrame
+from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt
 import re
 
@@ -17,6 +17,7 @@ class ShaderCreator(QtWidgets.QMainWindow):
 
         self.window_title = "Shader Creator"
         self.setWindowTitle(self.window_title)
+        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
         central_widget = QtWidgets.QWidget()
         self.setCentralWidget(central_widget)
         self.main_layout = QtWidgets.QVBoxLayout(central_widget)
@@ -209,7 +210,7 @@ class ShaderCreator(QtWidgets.QMainWindow):
 
 
 
-        if len(only_images) == 0:
+        if len(self.texture_maps) == 0:
             self.raise_warning("Didn't find any usable files")
         else:
 
