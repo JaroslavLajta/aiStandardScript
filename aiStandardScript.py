@@ -12,47 +12,54 @@ import re
 
 class ShaderCreator(QtWidgets.QMainWindow):
     def __init__(self,parent = None):
-        #Creates Window
-        super(ShaderCreator, self).__init__(parent)
 
-        self.window_title = "Shader Creator"
-        self.setWindowTitle(self.window_title)
-        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
-        central_widget = QtWidgets.QWidget()
-        self.setCentralWidget(central_widget)
-        self.main_layout = QtWidgets.QVBoxLayout(central_widget)
+        if(self.load_json()):
 
 
-        #Variables
-        self.folder_directory = "None"
+
+            #Creates Window
+            super(ShaderCreator, self).__init__(parent)
+
+            self.window_title = "Shader Creator"
+            self.setWindowTitle(self.window_title)
+            self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+            central_widget = QtWidgets.QWidget()
+            self.setCentralWidget(central_widget)
+            self.main_layout = QtWidgets.QVBoxLayout(central_widget)
 
 
-        #Supported all file formats as in https://help.autodesk.com/view/MAYAUL/2024/ENU/?guid=GUID-BF7C7484-C7F6-48C6-9092-7E6EB373B312
-        self.file_format = ["psd","als","avi","dds","gif","jpg","cin","iff","jpeg","exr","png","eps","yuv","pic","hdr","sgi","tim","tga","tif","rla","bmp","xpm"]
-        self.texture_maps = {}
-
-        #List off all the possible input spaces
-        self.COLOR_SPACES = cmds.colorManagementPrefs(query=True, inputSpaceNames=True)
-
-        #SubLayout
-        self.sub_layout = None
-        self.scroll_area = None
-        self.create_shader_button = None
-
-        #Name of the shader
-        self.shader_name_field = self.add_text_field(label='Shader Name', label_w=100, label_h=50, box_w=300)
-        self.shader_name_field.setPlaceholderText("standard_surface_shader")
-
-        #File directory button
-        self.dialogButton = self.add_button("CHOOSE FILE DIRECTORY", "Choose a file directory where all the texture maps are located")
-        self.directory_text = self.add_text_label(f"Directory: {self.folder_directory}","No Directory selected",False)
-
-        self.add_separator()
-
-        self.dialogButton.clicked.connect(self.add_file_window)
+            #Variables
+            self.folder_directory = "None"
 
 
-        self.load_json()
+            #Supported all file formats as in https://help.autodesk.com/view/MAYAUL/2024/ENU/?guid=GUID-BF7C7484-C7F6-48C6-9092-7E6EB373B312
+            self.file_format = ["psd","als","avi","dds","gif","jpg","cin","iff","jpeg","exr","png","eps","yuv","pic","hdr","sgi","tim","tga","tif","rla","bmp","xpm"]
+            self.texture_maps = {}
+
+            #List off all the possible input spaces
+            self.COLOR_SPACES = cmds.colorManagementPrefs(query=True, inputSpaceNames=True)
+
+            #SubLayout
+            self.sub_layout = None
+            self.scroll_area = None
+            self.create_shader_button = None
+
+            #Name of the shader
+            self.shader_name_field = self.add_text_field(label='Shader Name', label_w=100, label_h=50, box_w=300)
+            self.shader_name_field.setPlaceholderText("standard_surface_shader")
+
+            #File directory button
+            self.dialogButton = self.add_button("CHOOSE FILE DIRECTORY", "Choose a file directory where all the texture maps are located")
+            self.directory_text = self.add_text_label(f"Directory: {self.folder_directory}","No Directory selected",False)
+
+            self.add_separator()
+
+            self.dialogButton.clicked.connect(self.add_file_window)
+        else:
+            pass
+
+
+
 
 
     def format_camel_case(self,text:str):
@@ -528,13 +535,14 @@ class ShaderCreator(QtWidgets.QMainWindow):
                 cmds.connectAttr(f"{file_node}.{connect_attr}", f"{shader}.{texture_type}", force=True)
 
 
-    def load_json(self):
+    def load_json(self)->bool:
 
         """
         Loads a Json file with all the names and colorspaces inside python
         Gives error if it can't find it
         """
 
+        flag = False
         script_dir = os.path.dirname(os.path.abspath(__file__))
         json_filename = 'ai_standard_surface_shader_config.json'
 
@@ -543,12 +551,18 @@ class ShaderCreator(QtWidgets.QMainWindow):
         try:
             with open(json_filepath, 'r') as json_file:
                 self.shader_config = json.load(json_file)
+                flag = True
 
 
         except:
-            print(f"Error with the JSON file")
+            cmds.warning("Error with JSON file")
             cmds.confirmDialog(message="There has been an issue with the JSON file.\n\nMake sure it is in the same directory as the script."
                                        "\n\nReload script after", button=["OK"])
+
+
+
+
+        return flag
 
 
     def raise_warning(self, msg: str):
